@@ -1,6 +1,6 @@
 import { RegisterReducerState } from "@/shared/types/auth.interfaces";
 import { RegisterActions } from "./registerActions.type";
-import { PWD_REGEX, USER_REGEX } from "./RegEx";
+import { PWD_REGEX, USER_REGEX } from "./regEx";
 
 export const reducer = (state: RegisterReducerState, action: RegisterActions): RegisterReducerState => {
    switch (action.type) {

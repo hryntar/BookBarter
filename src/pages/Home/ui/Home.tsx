@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { setCredentials } from "@/app/slices/authSlice";
-import { useAppDispatch } from "@/app/store";
-import { logoutSlice } from "@/api/endpoints/auth/logout.api";
+
 import { Button } from "@nextui-org/react";
+import { useAppDispatch } from "@/app/appStore";
+import { setCredentials } from "@/features/auth";
+import { logoutSlice } from "@/features/auth/api/logout.api";
 
 const Home: FC = () => {
    // const navigate = useNavigate();
