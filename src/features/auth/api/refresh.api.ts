@@ -1,5 +1,5 @@
-import authApi from "@/api/authApi";
-import { IAuthResponse } from "@/types/auth.interfaces";
+import { IAuthResponse } from "@/shared/types/auth.interfaces";
+import { authApi } from "..";
 
 export const refreshSlice = authApi.injectEndpoints({
    endpoints: (builder) => ({

@@ -1,4 +1,4 @@
-import authApi from "@/api/authApi";
+import { authApi } from "..";
 
 export const logoutSlice = authApi.injectEndpoints({
    endpoints: (builder) => ({
