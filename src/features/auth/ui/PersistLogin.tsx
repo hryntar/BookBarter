@@ -2,8 +2,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Spinner } from "@nextui-org/react";
-import { selectCurrentToken, setCredentials } from "../..";
-import { refreshSlice } from "../../api/refresh.api";
+import { selectCurrentToken, setCredentials } from "..";
+import { refreshSlice } from "../api/refresh.api";
 import { useAppDispatch } from "@/app/appStore";
 import useLocalStorage from "@/shared/hooks/useLocalStorage";
 
