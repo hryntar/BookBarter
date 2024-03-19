@@ -16,4 +16,5 @@ body {
    line-height: 1.5;
    color: #ecedee;
    background-image: url("/image-7ont60rl.png");
+   background-attachment: fixed;
 }
