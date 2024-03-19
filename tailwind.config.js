@@ -8,6 +8,7 @@ export default {
       extend: {
          dropShadow: {
             "2xl": "15px 15px 40px rgba(102, 252, 241, 0.3)",
+            "3xl": "15px 15px 100px rgba(102, 252, 241, 0.3)",
          },
          boxShadow: {
             "3xl": "0 20px 50px -20px rgba(102, 252, 241, 0.3)",

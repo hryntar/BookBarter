@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,regular,500,600,700,italic&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Libre+Barcode+EAN13+Text:regular&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates:300,regular,500,600,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,9 +11,8 @@
 }
 
 body {
-   font-family: "Montserrat", sans-serif;
-   /* font-family: "Libre Barcode EAN13", sans-serif; */
-   font-size: 16px;
+   font-family: "Montserrat Alternates", sans-serif;
+   font-size: 18px;
    line-height: 1.5;
    color: #ecedee;
    background-image: url("/image-7ont60rl.png");
