@@ -2,15 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import { BaseLayout } from "./layouts/BaseLayout";
 import { Registration } from "@/pages/Registration";
 import { Login } from "@/pages/Login";
-import { LinkPage } from "@/pages/Welcome";
-import { Home, Lounge, Missing, Unauthorized } from "@/pages/Home";
+import { Welcome } from "@/pages/Welcome";
+import { Home, Missing, Unauthorized } from "@/pages/Home";
 import { PersistLogin, RequireAuth } from "@/features/auth";
-import { Admin } from "@/pages/Admin";
+import { Profile } from "@/pages/Profile";
+import { Wishlist } from "@/pages/Wishlist/ui/Wishlist";
+import { Publish } from "@/pages/Publish";
+import { Requests } from "@/pages/Requests";
 
 export enum Role {
-   User = 2001,
-   Admin = 5320,
-   Editor = 1808,
+   User = 2001, 
 }
 
 export const router = createBrowserRouter([
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       element: <BaseLayout />,
       children: [
          {
-            path: "register",
+            path: "registration",
             element: <Registration />,
          },
          {
@@ -27,8 +28,8 @@ export const router = createBrowserRouter([
             element: <Login />,
          },
          {
-            path: "linkpage",
-            element: <LinkPage />,
+            path: "welcome",
+            element: <Welcome />,
          },
          {
             path: "unauthorized",
@@ -47,29 +48,38 @@ export const router = createBrowserRouter([
                   ],
                },
                {
-                  element: <RequireAuth allowedRoles={[Role.Admin]} />,
+                  element: <RequireAuth allowedRoles={[Role.User]} />,
                   children: [
                      {
-                        path: "admin",
-                        element: <Admin />,
+                        path: "profile",
+                        element: <Profile />,
                      },
                   ],
                },
                {
-                  element: <RequireAuth allowedRoles={[Role.Editor]} />,
+                  element: <RequireAuth allowedRoles={[Role.User]} />,
                   children: [
                      {
-                        path: "editor",
-                        element: <Admin />,
+                        path: "wishlist",
+                        element: <Wishlist />,
                      },
                   ],
                },
                {
-                  element: <RequireAuth allowedRoles={[Role.Admin, Role.Editor]} />,
+                  element: <RequireAuth allowedRoles={[Role.User]} />,
                   children: [
                      {
-                        path: "lounge",
-                        element: <Lounge />,
+                        path: "publish",
+                        element: <Publish />,
+                     },
+                  ],
+               },
+               {
+                  element: <RequireAuth allowedRoles={[Role.User]} />,
+                  children: [
+                     {
+                        path: "requests",
+                        element: <Requests />,
                      },
                   ],
                },

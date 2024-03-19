@@ -1,42 +1,29 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
-import { Button } from "@nextui-org/react";
-import { useAppDispatch } from "@/app/appStore";
-import { setCredentials } from "@/features/auth";
-import { logoutSlice } from "@/features/auth/api/logout.api";
+
 
 const Home: FC = () => {
-   // const navigate = useNavigate();
-   const dispatch = useAppDispatch();
 
-   const signOut = async () => {
-      await dispatch(logoutSlice.endpoints.logout.initiate()).unwrap();
-      console.log("Logged out");
-      dispatch(setCredentials({ roles: [], accessToken: null }));
-      // navigate("/linkpage");
-   };
 
    return (
       <section className="text-xl sm:min-w-[450px] max-sm:w-full p-10 border-1 drop-shadow-2xl shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
          <h1 className="font-bold text-primary text-3xl text-center mb-7">Home</h1>
          <nav className="grid gap-y-5 font-semibold mb-[100px]">
-            <Link className="hover:text-primary transition" to="/editor">
-               Editor page
+            <Link className="hover:text-primary transition" to="/profile">
+               Profile
             </Link>
-            <Link className="hover:text-primary transition" to="/admin">
-               Admin page
+            <Link className="hover:text-primary transition" to="/wishlist">
+               Wishlist
             </Link>
-            <Link className="hover:text-primary transition" to="/lounge">
-               Lounge
+            <Link className="hover:text-primary transition" to="/publish">
+               Add book
             </Link>
-            <Link className="hover:text-primary transition" to="/linkpage">
-               Link page
+            <Link className="hover:text-primary transition" to="/requests">
+               Requests
             </Link>
          </nav>
-         <Button color="danger" variant="ghost" onClick={signOut} className="font-semibold">
-            Sign Out
-         </Button>
+         
       </section>
    );
 };

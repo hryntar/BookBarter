@@ -1,3 +1,3 @@
-import LinkPage from "./ui/LinkPage";
+import Welcome from "./ui/Welcome";
 
-export { LinkPage };
+export { Welcome };

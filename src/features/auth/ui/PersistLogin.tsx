@@ -29,7 +29,7 @@ const PersistLogin = () => {
             );
          } catch (error) {
             console.error(error);
-            navigate("/login");
+            navigate("/welcome");
          } finally {
             isMounted && setIsLoading(false);
          }
