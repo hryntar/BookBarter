@@ -6,9 +6,9 @@ import { useImageUpload, btnAttribs, useBase64 } from "@/shared";
 import { RegisterInitState, reducer, useRegisterMutation } from "@/features/auth";
 import { Pencil } from "lucide-react";
 import { Inputs } from "./Inputs";
+import { Success } from "./Success";
 
 const Registration: FC = () => {
-   // const userRef = useRef<HTMLInputElement>(null);
    const errRef = useRef<HTMLInputElement>(null);
    const [agree, setAgree] = useState(false);
 
@@ -17,12 +17,12 @@ const Registration: FC = () => {
 
    const [state, dispatch] = useReducer(reducer, RegisterInitState);
 
-   const [register, { isLoading }] = useRegisterMutation(); 
+   const [register, { isLoading }] = useRegisterMutation();
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      try { 
-         await register({ login: state.login, pwd: state.pwd, email: state.email, image}).unwrap();
+      try {
+         await register({ login: state.login, pwd: state.pwd, email: state.email, image }).unwrap();
          dispatch({ type: "SET_SUCCESS", payload: true });
          dispatch({ type: "SET_LOGIN", payload: "" });
          dispatch({ type: "SET_PWD", payload: "" });
@@ -45,12 +45,7 @@ const Registration: FC = () => {
    return (
       <div className="grid place-content-center py-10">
          {state.success ? (
-            <section>
-               <h1>You successfully registered an account </h1>
-               <p>
-                  <Link to="/login">Sign In</Link>
-               </p>
-            </section>
+            <Success />
          ) : (
             <section className="sm:min-w-[600px] max-sm:w-full px-10 py-10 max-sm:px-5 border-1 shadow-3xl border-primary rounded-3xl">
                <h1 className="font-bold text-primary text-3xl text-center mb-7">Зареєструватись</h1>
@@ -59,102 +54,19 @@ const Registration: FC = () => {
                      placement="bottom-right"
                      onClick={() => document.getElementById("fileInput")?.click()}
                      color="primary"
-                     content={<Pencil size={20} className="cursor-pointer" />} 
+                     content={<Pencil size={20} className="cursor-pointer" />}
                      size="sm"
                      className="w-[30px] h-[30px]"
                   >
                      <Avatar className="w-[70px] h-[70px]" src={preview} />
-                     
                   </Badge>
-                  <input id="fileInput" type="file" accept="image/*" onChange={onSelectFile} style={{ display: "none" }} /> 
+                  <input id="fileInput" type="file" accept="image/*" onChange={onSelectFile} style={{ display: "none" }} />
                </div>
                <form className="grid gap-y-2" onSubmit={handleSubmit}>
                   <Inputs state={state} dispatch={dispatch} />
-                  {/* <Tooltip
-                     placement="bottom-start"
-                     color="primary"
-                     showArrow
-                     isOpen={Boolean(state.loginFocus && state.login && !state.validLogin)}
-                     content="Наприклад: coolman0908 (Мін. к-ть символів - 4)"
-                  >
-                     <Input
-                        {...inputAttribs}
-                        type="text"
-                        label="Логін"
-                        classNames={{ label: "after:content-['']" }}
-                        ref={userRef}
-                        onChange={(e) => dispatch({ type: "SET_LOGIN", payload: e.target.value })}
-                        aria-invalid={state.validLogin ? "false" : "true"}
-                        aria-describedby="uidnote"
-                        onFocus={() => dispatch({ type: "SET_LOGIN_FOCUS", payload: true })}
-                        onBlur={() => dispatch({ type: "SET_LOGIN_FOCUS", payload: false })}
-                     />
-                  </Tooltip>
-
-                  <Tooltip
-                     placement="bottom-start"
-                     color="primary"
-                     showArrow
-                     isOpen={Boolean(state.emailFocus && !state.validEmail)}
-                     content="Введіть адресу електронної пошти"
-                  >
-                     <Input
-                        {...inputAttribs}
-                        type="email"
-                        label="Email"
-                        classNames={{ label: "after:content-['']" }}
-                        onChange={(e) => dispatch({ type: "SET_EMAIL", payload: e.target.value })}
-                        aria-invalid={state.validEmail ? "false" : "true"}
-                        aria-describedby="uidnote"
-                        onFocus={() => dispatch({ type: "SET_EMAIL_FOCUS", payload: true })}
-                        onBlur={() => dispatch({ type: "SET_EMAIL_FOCUS", payload: false })}
-                     />
-                  </Tooltip>
-
-                  <Tooltip
-                     placement="bottom-start"
-                     color="primary"
-                     showArrow
-                     isOpen={Boolean(state.pwdFocus && !state.validPwd)}
-                     content="Від 8 до 32 символів. Обов'язкові цифри та літери"
-                  >
-                     <Input
-                        {...inputAttribs}
-                        label="Пароль"
-                        type="password"
-                        classNames={{ label: "after:content-['']" }}
-                        onChange={(e) => dispatch({ type: "SET_PWD", payload: e.target.value })}
-                        value={state.pwd}
-                        aria-invalid={state.validPwd ? "false" : "true"}
-                        aria-describedby="pwdnote"
-                        onFocus={() => dispatch({ type: "SET_PWD_FOCUS", payload: true })}
-                        onBlur={() => dispatch({ type: "SET_PWD_FOCUS", payload: false })}
-                     />
-                  </Tooltip>
-
-                  <Tooltip
-                     placement="bottom-start"
-                     color="primary"
-                     showArrow
-                     isOpen={Boolean(state.matchFocus && !state.validMatch)}
-                     content="Паролі мають співпадати"
-                  >
-                     <Input
-                        {...inputAttribs}
-                        label="Підтвердіть пароль"
-                        type="password"
-                        onChange={(e) => dispatch({ type: "SET_MATCH_PWD", payload: e.target.value })}
-                        value={state.matchPwd}
-                        aria-invalid={state.validMatch ? "false" : "true"}
-                        aria-describedby="confirmnote"
-                        classNames={{ label: "after:content-['']" }}
-                        onFocus={() => dispatch({ type: "SET_MATCH_FOCUS", payload: true })}
-                        onBlur={() => dispatch({ type: "SET_MATCH_FOCUS", payload: false })}
-                     />
-                  </Tooltip> */}
 
                   <Checkbox className="mt-3 mb-[100px]" onChange={() => setAgree(!agree)}>
-                     <span className="text-sm">
+                     <span className="text-sm max-sm:text-[12px]">
                         Я погоджуюсь з <span className="text-primary font-semibold">умовами користування та правилами спільноти</span>
                      </span>
                   </Checkbox>
@@ -176,7 +88,7 @@ const Registration: FC = () => {
                   </span>
                </div>
             </section>
-         )} 
+         )}
          <Toaster show={Boolean(state.errMsg)} msg={state.errMsg} />
       </div>
    );
