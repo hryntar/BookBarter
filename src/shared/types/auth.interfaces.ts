@@ -12,6 +12,7 @@ export interface IRegisterCredentials {
    login: string;
    pwd: string;
    email: string; 
+   image: string | null;
 }
 
 export interface RegisterReducerState {
