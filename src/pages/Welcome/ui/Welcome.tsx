@@ -1,11 +1,9 @@
-import ModalLogin from "@/pages/Login/ui/ModalLogin";
-import { Button, useDisclosure } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Welcome: FC = () => {
    const navigate = useNavigate();
-   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
    return (
       <>
@@ -13,7 +11,7 @@ const Welcome: FC = () => {
             <header className="sm:px-10">
                <nav className="flex items-center justify-between sm:h-[120px] h-[80px]">
                   <img className="sm:w-[150px] w-[120px]" width={150} src="/logo.svg" alt="BookBarter" />
-                  <Button size="md" color="primary" onPress={onOpen}>
+                  <Button size="md" color="primary" onPress={() => navigate("/login")}>
                      Увійти
                   </Button>
                </nav>
@@ -30,7 +28,7 @@ const Welcome: FC = () => {
                      </p>
                      <p className="mt-5">Приєднуйтесь до нас та відкрийте для себе радість обміну книгами!</p>
                   </div>
-                  <Button size="lg" className="w-[170px] mt-10" color="primary" onPress={() => navigate("/login")}>
+                  <Button size="lg" className="w-[170px] mt-10" color="primary" onPress={() => navigate("/registration")}>
                      Розпочати
                   </Button>
                </div>
@@ -41,7 +39,6 @@ const Welcome: FC = () => {
                </div>
             </div>
          </section> 
-         <ModalLogin isOpen={isOpen} onOpenChange={onOpenChange} /> 
       </> 
    );
 };
