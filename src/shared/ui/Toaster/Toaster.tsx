@@ -5,7 +5,7 @@ interface Props {
    show: boolean, 
 }
 
-export const Toster = ({msg, show}: Props) => {
+export const Toaster = ({msg, show}: Props) => {
    const [isVisible, setIsVisible] = useState(show);
 
    useEffect(() => {

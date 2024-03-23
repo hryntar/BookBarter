@@ -8,7 +8,7 @@ import { initialState } from "@/features/auth/model/registerInitState";
 import { reducer } from "@/features/auth/model/registerReducer";
 import { useRegisterMutation } from "@/features/auth/api/register.api";
 import { btnAttribs, inputAttribs } from "@/shared/ui/defaultAttribs";
-import { Toster } from "@/shared/ui/Toster/Toster";
+import { Toaster } from "@/shared/ui";
 
 const Registration: FC = () => {
    const userRef = useRef<HTMLInputElement>(null);
@@ -42,8 +42,7 @@ const Registration: FC = () => {
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      try {
-         console.log("state", state);
+      try { 
          await register({ user: state.user, pwd: state.pwd, email: state.email }).unwrap();
          dispatch({ type: "SET_SUCCESS", payload: true });
          dispatch({ type: "SET_USER", payload: "" });
@@ -160,7 +159,7 @@ const Registration: FC = () => {
                </div>
             </section>
          )}
-         <Toster show={Boolean(state.errMsg)} msg={state.errMsg}/>
+         <Toaster show={Boolean(state.errMsg)} msg={state.errMsg}/>
       </div>
    );
 };

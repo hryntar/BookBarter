@@ -11,6 +11,7 @@ import { setCredentials } from "@/features/auth";
 import { btnAttribs, inputAttribs } from "@/shared/ui/defaultAttribs";
 import { EyeFilledIcon } from "./icons/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
+import { Toaster } from "@/shared/ui";
 
 const Login = () => {
    const dispatch = useAppDispatch();
@@ -48,13 +49,13 @@ const Login = () => {
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
          if (!err?.originalStatus) {
-            setErrMsg("No Server Response");
+            setErrMsg("Сервер не відповідає( Спробуйте ще раз");
          } else if (err.originalStatus === 400) {
-            setErrMsg("Missing Username or Password");
+            setErrMsg("Потрібно заповнити всі поля");
          } else if (err.originalStatus === 401) {
-            setErrMsg("Incorrect login or password");
+            setErrMsg("Неправильний логін або пароль");
          } else {
-            setErrMsg("Login Failed");
+            setErrMsg("Виникла помилка( Спробуйте ще раз");
          }
          errRef.current?.focus();
       }
@@ -67,9 +68,7 @@ const Login = () => {
             <form className="grid gap-y-2 " onSubmit={handleSubmit}>
                <Input
                   {...inputAttribs}
-                  autoFocus
-                  isInvalid={errMsg ? true : false}
-                  errorMessage={errMsg}
+                  autoFocus 
                   type="text"
                   label="Ім'я користувача"
                   ref={userRef}
@@ -77,9 +76,7 @@ const Login = () => {
                   classNames={{ label: "after:content-['']" }}
                />
                <Input
-                  {...inputAttribs}
-                  isInvalid={errMsg ? true : false}
-                  errorMessage={errMsg}
+                  {...inputAttribs} 
                   type={isVisible ? "text" : "password"}
                   label="Пароль"
                   onChange={(e) => setPwd(e.target.value)}
@@ -109,6 +106,7 @@ const Login = () => {
                </span>
             </div>
          </section>
+         <Toaster show={Boolean(errMsg)} msg={errMsg} />
       </div>
    );
 };
