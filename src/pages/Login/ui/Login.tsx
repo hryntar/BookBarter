@@ -62,7 +62,7 @@ const Login = () => {
 
    return (
       <div className="pt-20 grid place-content-center">
-         <section className="sm:min-w-[450px] max-sm:w-full p-10 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
+         <section className="sm:min-w-[600px] max-sm:w-full p-10 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
             <h1 className="font-bold text-primary text-3xl mb-7 backdrop-opacity-20 backdrop-blur-[100px] drop-shadow-2xl text-center">Увійти</h1>
             <form className="grid gap-y-2 " onSubmit={handleSubmit}>
                <Input

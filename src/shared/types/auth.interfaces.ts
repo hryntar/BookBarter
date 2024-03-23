@@ -11,12 +11,16 @@ export interface IAuthResponse {
 export interface IRegisterCredentials {
    user: string;
    pwd: string;
+   email: string; 
 }
 
 export interface RegisterReducerState {
    user: string;
    validUser: boolean;
    userFocus: boolean;
+   email: string,
+   validEmail: boolean,
+   emailFocus: boolean,
    pwd: string;
    validPwd: boolean;
    pwdFocus: boolean;
