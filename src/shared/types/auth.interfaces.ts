@@ -9,14 +9,19 @@ export interface IAuthResponse {
 }
 
 export interface IRegisterCredentials {
-   user: string;
+   login: string;
    pwd: string;
+   email: string; 
+   image: string | null;
 }
 
 export interface RegisterReducerState {
-   user: string;
-   validUser: boolean;
-   userFocus: boolean;
+   login: string;
+   validLogin: boolean;
+   loginFocus: boolean;
+   email: string,
+   validEmail: boolean,
+   emailFocus: boolean,
    pwd: string;
    validPwd: boolean;
    pwdFocus: boolean;

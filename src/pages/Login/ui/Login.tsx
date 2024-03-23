@@ -1,16 +1,13 @@
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Input } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
-import { Checkbox } from "@nextui-org/react";
-import { useAppDispatch } from "@/app/appStore";
-import useInput from "@/shared/hooks/useInput";
-import useToggle from "@/shared/hooks/useToggle";
-import { useLoginMutation } from "@/features/auth/api/login.api";
-import { setCredentials } from "@/features/auth";
+import { Input, Button, Checkbox } from "@nextui-org/react";
 import { btnAttribs, inputAttribs } from "@/shared/ui/defaultAttribs";
 import { EyeFilledIcon } from "./icons/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
+import { useInput, useToggle } from "@/shared";
+import { Toaster } from "@/shared/ui";
+import { useAppDispatch } from "@/app/appStore";
+import { useLoginMutation, setCredentials } from "@/features/auth";
 
 const Login = () => {
    const dispatch = useAppDispatch();
@@ -48,28 +45,26 @@ const Login = () => {
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
          if (!err?.originalStatus) {
-            setErrMsg("No Server Response");
+            setErrMsg("Сервер не відповідає( Спробуйте ще раз");
          } else if (err.originalStatus === 400) {
-            setErrMsg("Missing Username or Password");
+            setErrMsg("Потрібно заповнити всі поля");
          } else if (err.originalStatus === 401) {
-            setErrMsg("Incorrect login or password");
+            setErrMsg("Неправильний логін або пароль");
          } else {
-            setErrMsg("Login Failed");
+            setErrMsg("Виникла помилка( Спробуйте ще раз");
          }
          errRef.current?.focus();
       }
    };
 
    return (
-      <div className="pt-20 grid place-content-center">
-         <section className="sm:min-w-[450px] max-sm:w-full p-10 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
+      <div className="pt-20 max-sm:py-10 grid place-content-center">
+         <section className="sm:min-w-[600px] max-sm:w-full p-10 max-sm:p-5 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
             <h1 className="font-bold text-primary text-3xl mb-7 backdrop-opacity-20 backdrop-blur-[100px] drop-shadow-2xl text-center">Увійти</h1>
             <form className="grid gap-y-2 " onSubmit={handleSubmit}>
                <Input
                   {...inputAttribs}
                   autoFocus
-                  isInvalid={errMsg ? true : false}
-                  errorMessage={errMsg}
                   type="text"
                   label="Ім'я користувача"
                   ref={userRef}
@@ -78,8 +73,6 @@ const Login = () => {
                />
                <Input
                   {...inputAttribs}
-                  isInvalid={errMsg ? true : false}
-                  errorMessage={errMsg}
                   type={isVisible ? "text" : "password"}
                   label="Пароль"
                   onChange={(e) => setPwd(e.target.value)}
@@ -95,7 +88,7 @@ const Login = () => {
                      </button>
                   }
                />
-               <Checkbox className="mt-1 mb-[100px]" onChange={toggleCheck} isSelected={check}>
+               <Checkbox className="mt-3 mb-[100px]" onChange={toggleCheck} isSelected={check}>
                   <span className="text-sm">Запам'ятати мене</span>
                </Checkbox>
                <Button {...btnAttribs} fullWidth isLoading={isLoading} type="submit">
@@ -109,6 +102,7 @@ const Login = () => {
                </span>
             </div>
          </section>
+         <Toaster show={Boolean(errMsg)} msg={errMsg} />
       </div>
    );
 };
