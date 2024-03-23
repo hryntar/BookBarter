@@ -1,17 +1,13 @@
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Input } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
-import { Checkbox } from "@nextui-org/react";
-import { useAppDispatch } from "@/app/appStore";
-import useInput from "@/shared/hooks/useInput";
-import useToggle from "@/shared/hooks/useToggle";
-import { useLoginMutation } from "@/features/auth/api/login.api";
-import { setCredentials } from "@/features/auth";
+import { Input, Button, Checkbox } from "@nextui-org/react";
 import { btnAttribs, inputAttribs } from "@/shared/ui/defaultAttribs";
 import { EyeFilledIcon } from "./icons/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
+import { useInput, useToggle } from "@/shared";
 import { Toaster } from "@/shared/ui";
+import { useAppDispatch } from "@/app/appStore";
+import { useLoginMutation, setCredentials } from "@/features/auth";
 
 const Login = () => {
    const dispatch = useAppDispatch();
@@ -62,13 +58,13 @@ const Login = () => {
    };
 
    return (
-      <div className="pt-20 grid place-content-center">
+      <div className="pt-20 max-sm:py-10 grid place-content-center">
          <section className="sm:min-w-[600px] max-sm:w-full p-10 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
             <h1 className="font-bold text-primary text-3xl mb-7 backdrop-opacity-20 backdrop-blur-[100px] drop-shadow-2xl text-center">Увійти</h1>
             <form className="grid gap-y-2 " onSubmit={handleSubmit}>
                <Input
                   {...inputAttribs}
-                  autoFocus 
+                  autoFocus
                   type="text"
                   label="Ім'я користувача"
                   ref={userRef}
@@ -76,7 +72,7 @@ const Login = () => {
                   classNames={{ label: "after:content-['']" }}
                />
                <Input
-                  {...inputAttribs} 
+                  {...inputAttribs}
                   type={isVisible ? "text" : "password"}
                   label="Пароль"
                   onChange={(e) => setPwd(e.target.value)}

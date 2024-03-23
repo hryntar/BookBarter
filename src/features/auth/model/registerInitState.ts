@@ -1,9 +1,9 @@
 import { RegisterReducerState } from "@/shared/types/auth.interfaces";
 
-export const initialState: RegisterReducerState = {
-   user: "",
-   validUser: false,
-   userFocus: false,
+export const RegisterInitState: RegisterReducerState = {
+   login: "",
+   validLogin: false,
+   loginFocus: false,
    email: "",
    validEmail: false,
    emailFocus: false,

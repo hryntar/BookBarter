@@ -1,21 +1,16 @@
 import { useEffect, useRef, FC, useReducer, useState } from "react";
-import { Link } from "react-router-dom";
-
-import { Checkbox, Input, Tooltip } from "@nextui-org/react";
-
-import { Button } from "@nextui-org/react";
-import { initialState } from "@/features/auth/model/registerInitState";
-import { reducer } from "@/features/auth/model/registerReducer";
-import { useRegisterMutation } from "@/features/auth/api/register.api";
+import { Link } from "react-router-dom"; 
+import { Checkbox, Input, Tooltip, Button } from "@nextui-org/react"; 
 import { btnAttribs, inputAttribs } from "@/shared/ui/defaultAttribs";
 import { Toaster } from "@/shared/ui";
+import { RegisterInitState, reducer, useRegisterMutation} from "@/features/auth"; 
 
 const Registration: FC = () => {
    const userRef = useRef<HTMLInputElement>(null);
    const errRef = useRef<HTMLInputElement>(null);
    const [agree, setAgree] = useState(false);
 
-   const [state, dispatch] = useReducer(reducer, initialState);
+   const [state, dispatch] = useReducer(reducer, RegisterInitState);
 
    const [register, { isLoading }] = useRegisterMutation();
 
@@ -24,8 +19,8 @@ const Registration: FC = () => {
    }, []);
 
    useEffect(() => {
-      dispatch({ type: "SET_USER", payload: state.user });
-   }, [state.user]);
+      dispatch({ type: "SET_LOGIN", payload: state.login });
+   }, [state.login]);
 
    useEffect(() => {
       dispatch({ type: "SET_EMAIL", payload: state.email });
@@ -38,14 +33,14 @@ const Registration: FC = () => {
 
    useEffect(() => {
       dispatch({ type: "SET_ERR_MSG", payload: "" });
-   }, [state.user, state.pwd, state.matchPwd]);
+   }, [state.login, state.pwd, state.matchPwd]);
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       try { 
-         await register({ user: state.user, pwd: state.pwd, email: state.email }).unwrap();
+         await register({ login: state.login, pwd: state.pwd, email: state.email }).unwrap();
          dispatch({ type: "SET_SUCCESS", payload: true });
-         dispatch({ type: "SET_USER", payload: "" });
+         dispatch({ type: "SET_LOGIN", payload: "" });
          dispatch({ type: "SET_PWD", payload: "" });
          dispatch({ type: "SET_EMAIL", payload: "" });
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -76,18 +71,18 @@ const Registration: FC = () => {
             <section className="sm:min-w-[450px] max-sm:w-full max-w-[700px] p-10 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px]"> 
                <h1 className="font-bold text-primary text-3xl text-center mb-7">Зареєструватись</h1>
                <form className="grid gap-y-2" onSubmit={handleSubmit}>
-                  <Tooltip placement="bottom-start" color="primary" showArrow isOpen={Boolean(state.userFocus && state.user && !state.validUser)} content="Наприклад: hryntar0908 (Мін. к-ть символів - 4)">
+                  <Tooltip placement="bottom-start" color="primary" showArrow isOpen={Boolean(state.loginFocus && state.login && !state.validLogin)} content="Наприклад: hryntar0908 (Мін. к-ть символів - 4)">
                      <Input
                         {...inputAttribs}
                         type="text"
-                        label="Username"
+                        label="Логін"
                         classNames={{ label: "after:content-['']" }}
                         ref={userRef}
-                        onChange={(e) => dispatch({ type: "SET_USER", payload: e.target.value })}
-                        aria-invalid={state.validUser ? "false" : "true"}
+                        onChange={(e) => dispatch({ type: "SET_LOGIN", payload: e.target.value })}
+                        aria-invalid={state.validLogin ? "false" : "true"}
                         aria-describedby="uidnote"
-                        onFocus={() => dispatch({ type: "SET_USER_FOCUS", payload: true })}
-                        onBlur={() => dispatch({ type: "SET_USER_FOCUS", payload: false })}
+                        onFocus={() => dispatch({ type: "SET_LOGIN_FOCUS", payload: true })}
+                        onBlur={() => dispatch({ type: "SET_LOGIN_FOCUS", payload: false })}
                      />
                   </Tooltip> 
 
@@ -146,7 +141,7 @@ const Registration: FC = () => {
                      fullWidth
                      isLoading={isLoading}
                      type="submit"
-                     isDisabled={!state.validUser || !state.validPwd || !state.validMatch || !agree ? true : false}
+                     isDisabled={!state.validLogin || !state.validPwd || !state.validMatch || !agree ? true : false}
                   >
                      Зареєструватись
                   </Button>

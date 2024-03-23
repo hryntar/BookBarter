@@ -4,8 +4,8 @@ import { EMAIL_REGEX, PWD_REGEX, USER_REGEX } from "./regEx";
 
 export const reducer = (state: RegisterReducerState, action: RegisterActions): RegisterReducerState => {
    switch (action.type) {
-      case "SET_USER":
-         return { ...state, user: action.payload, validUser: USER_REGEX.test(action.payload) }; 
+      case "SET_LOGIN":
+         return { ...state, login: action.payload, validLogin: USER_REGEX.test(action.payload) }; 
       case "SET_EMAIL":
          return { ...state, email: action.payload, validEmail: EMAIL_REGEX.test(action.payload) };
       case "SET_PWD":
@@ -16,8 +16,8 @@ export const reducer = (state: RegisterReducerState, action: RegisterActions): R
          return { ...state, errMsg: action.payload };
       case "SET_SUCCESS":
          return { ...state, success: action.payload };
-      case "SET_USER_FOCUS":
-         return { ...state, userFocus: action.payload };
+      case "SET_LOGIN_FOCUS":
+         return { ...state, loginFocus: action.payload };
       case "SET_PWD_FOCUS":
          return { ...state, pwdFocus: action.payload };
       case "SET_EMAIL_FOCUS":
