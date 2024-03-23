@@ -68,10 +68,10 @@ const Registration: FC = () => {
                </p>
             </section>
          ) : (
-            <section className="sm:min-w-[450px] max-sm:w-full max-w-[700px] p-10 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px]"> 
+            <section className="sm:min-w-[600px] max-sm:w-full p-10 max-sm:p-5 border-1 shadow-3xl border-primary rounded-3xl"> 
                <h1 className="font-bold text-primary text-3xl text-center mb-7">Зареєструватись</h1>
                <form className="grid gap-y-2" onSubmit={handleSubmit}>
-                  <Tooltip placement="bottom-start" color="primary" showArrow isOpen={Boolean(state.loginFocus && state.login && !state.validLogin)} content="Наприклад: hryntar0908 (Мін. к-ть символів - 4)">
+                  <Tooltip placement="bottom-start" color="primary" showArrow isOpen={Boolean(state.loginFocus && state.login && !state.validLogin)} content="Наприклад: coolman0908 (Мін. к-ть символів - 4)">
                      <Input
                         {...inputAttribs}
                         type="text"
