@@ -2,14 +2,14 @@ import { RegisterActions } from "@/features/auth/model/registerActions.type";
 import { inputAttribs } from "@/shared";
 import { RegisterReducerState } from "@/shared/types/auth.interfaces";
 import { Input, Tooltip } from "@nextui-org/react";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
 interface InputsProps {
    state: RegisterReducerState;
    dispatch: React.Dispatch<RegisterActions>;
 }
 
-export const Inputs = ({ state, dispatch }: InputsProps) => {
+export const Inputs = memo(({ state, dispatch }: InputsProps) => {
    const loginRef = useRef<HTMLInputElement>(null); 
 
    useEffect(() => {
@@ -119,4 +119,4 @@ export const Inputs = ({ state, dispatch }: InputsProps) => {
          </Tooltip>
       </>
    );
-};
+});
