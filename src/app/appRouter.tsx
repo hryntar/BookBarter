@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { BaseLayout } from "./layouts/BaseLayout";
-import { Registration } from "@/pages/Registration";
-import { Login } from "@/pages/Login";
+import { RegistrationPage } from "@/pages/Registration";
+import { LoginPage } from "@/pages/Login";
 import { Welcome } from "@/pages/Welcome";
 import { Home, Missing, Unauthorized } from "@/pages/Home";
 import { PersistLogin, RequireAuth } from "@/features/auth";
@@ -21,11 +21,11 @@ export const router = createBrowserRouter([
       children: [
          {
             path: "registration",
-            element: <Registration />,
+            element: <RegistrationPage />,
          },
          {
             path: "login",
-            element: <Login />,
+            element: <LoginPage />,
          },
          {
             path: "welcome",
