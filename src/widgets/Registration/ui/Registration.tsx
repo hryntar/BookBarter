@@ -41,6 +41,7 @@ const Registration: FC = () => {
          errRef.current?.focus();
       }
    };
+   
 
    return (
       <>
