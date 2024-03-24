@@ -43,7 +43,7 @@ const Registration: FC = () => {
    };
 
    return (
-      <div className="grid place-content-center py-10">
+      <>
          {state.success ? (
             <Success />
          ) : (
@@ -90,7 +90,7 @@ const Registration: FC = () => {
             </section>
          )}
          <Toaster show={Boolean(state.errMsg)} msg={state.errMsg} />
-      </div>
+      </>
    );
 };
 
