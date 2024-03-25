@@ -1,6 +1,6 @@
 import { RegisterActions } from "@/features/auth/model/registerActions.type";
 import { inputAttribs } from "@/shared";
-import { RegisterReducerState } from "@/shared/types/auth.interfaces";
+import { RegisterReducerState } from "@/features/auth/model/auth.interfaces";
 import { Input, Tooltip } from "@nextui-org/react";
 import { memo, useEffect, useRef } from "react";
 
@@ -10,7 +10,7 @@ interface InputsProps {
 }
 
 export const Inputs = memo(({ state, dispatch }: InputsProps) => {
-   const loginRef = useRef<HTMLInputElement>(null); 
+   const loginRef = useRef<HTMLInputElement>(null);
 
    useEffect(() => {
       loginRef.current?.focus();
@@ -18,11 +18,15 @@ export const Inputs = memo(({ state, dispatch }: InputsProps) => {
 
    useEffect(() => {
       dispatch({ type: "SET_LOGIN", payload: state.login });
-   }, [state.login,dispatch]);
+   }, [state.login, dispatch]);
 
    useEffect(() => {
       dispatch({ type: "SET_EMAIL", payload: state.email });
    }, [state.email, dispatch]);
+
+   useEffect(() => {
+      dispatch({ type: "SET_PHONE", payload: state.phone });
+   }, [state.phone, dispatch]);
 
    useEffect(() => {
       dispatch({ type: "SET_PWD", payload: state.pwd });
@@ -31,7 +35,7 @@ export const Inputs = memo(({ state, dispatch }: InputsProps) => {
 
    useEffect(() => {
       dispatch({ type: "SET_ERR_MSG", payload: "" });
-   }, [state.login, state.pwd, state.matchPwd, dispatch]);
+   }, [state.login, state.pwd, state.matchPwd, dispatch]); 
 
    return (
       <>
@@ -45,7 +49,7 @@ export const Inputs = memo(({ state, dispatch }: InputsProps) => {
             <Input
                {...inputAttribs}
                type="text"
-               label="Логін"
+               label="Логін" 
                classNames={{ label: "after:content-['']" }}
                ref={loginRef}
                onChange={(e) => dispatch({ type: "SET_LOGIN", payload: e.target.value })}
@@ -73,6 +77,32 @@ export const Inputs = memo(({ state, dispatch }: InputsProps) => {
                aria-describedby="uidnote"
                onFocus={() => dispatch({ type: "SET_EMAIL_FOCUS", payload: true })}
                onBlur={() => dispatch({ type: "SET_EMAIL_FOCUS", payload: false })}
+            />
+         </Tooltip>
+
+         <Tooltip
+            placement="bottom-start"
+            color="primary"
+            showArrow
+            isOpen={Boolean(state.phoneFocus && !state.validPhone)}
+            content="Введіть номер мобільного телефону"
+         >
+            <Input
+               {...inputAttribs}
+               type="phone"
+               label="Номер телефону"
+               classNames={{ label: "after:content-['']" }}
+               value={state.phone}
+               onChange={(e) => {
+                  let value = e.target.value;
+                  if (!value.startsWith("+380")) {
+                      value = "+380" + value.slice(4);
+                  }
+                  dispatch({ type: "SET_PHONE", payload: value })}}
+               aria-invalid={state.validPhone ? "false" : "true"}
+               aria-describedby="uidnote"
+               onFocus={() => dispatch({ type: "SET_PHONE_FOCUS", payload: true })}
+               onBlur={() => dispatch({ type: "SET_PHONE_FOCUS", payload: false })}
             />
          </Tooltip>
 

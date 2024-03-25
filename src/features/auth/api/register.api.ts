@@ -1,4 +1,4 @@
-import { IRegisterCredentials } from "@/shared/types/auth.interfaces";
+import { IRegisterCredentials } from "@/features/auth/model/auth.interfaces";
 import { authApi } from "..";
 
 export const registerSlice = authApi.injectEndpoints({

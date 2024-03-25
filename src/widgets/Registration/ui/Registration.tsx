@@ -26,9 +26,9 @@ const Registration: FC = () => {
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      try {
+      try { 
          setIsLoading(true);
-         // await register({ login: state.login, pwd: state.pwd, email: state.email, image }).unwrap();
+         // await register({ login: state.login, pwd: state.pwd, email: state.email, phone: state.phone, image }).unwrap();
          await new Promise((resolve) => setTimeout(resolve, 1000));
          setIsLoading(false);
          dispatch({ type: "SET_SUCCESS", payload: true });
