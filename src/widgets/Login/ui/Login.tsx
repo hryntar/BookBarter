@@ -7,7 +7,8 @@ import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
 import { useInput, useToggle } from "@/shared";
 import { Toaster } from "@/shared/ui";
 import { useAppDispatch } from "@/app/appStore";
-import { useLoginMutation, setCredentials } from "@/features/auth";
+import { setCredentials } from "@/features/auth";
+// import { useLoginMutation, setCredentials } from "@/features/auth";
 
 const Login = () => {
    const dispatch = useAppDispatch();
@@ -24,7 +25,8 @@ const Login = () => {
    const [check, toggleCheck] = useToggle("persist", false);
    const [isVisible, setIsVisible] = useState(false);
 
-   const [login, { isLoading }] = useLoginMutation();
+   // const [login, { isLoading }] = useLoginMutation();
+   const [isLoading, setIsLoading] = useState(false); 
 
    useEffect(() => {
       userRef.current?.focus();
@@ -37,8 +39,13 @@ const Login = () => {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       try {
-         const userData = await login({ user, pwd }).unwrap();
+         setIsLoading(true);
+         // const userData = await login({ user, pwd }).unwrap();
+         // dispatch(setCredentials({ ...userData }));
+         const userData = { roles: [2001], accessToken: "1" };
+         await new Promise((resolve) => setTimeout(resolve, 1000));
          dispatch(setCredentials({ ...userData }));
+         setIsLoading(false);
          resetUser("");
          setPwd("");
          navigate(from, { replace: true });
@@ -59,7 +66,7 @@ const Login = () => {
 
    return (
       <>
-         <section className="sm:min-w-[600px] max-sm:w-full p-10 max-sm:p-5 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
+         <section className="sm:min-w-[600px] max-sm:w-full py-10 px-10 max-sm:px-5 border-1 shadow-3xl border-primary rounded-3xl backdrop-opacity-20 backdrop-blur-[100px] ">
             <h1 className="font-bold text-primary text-3xl mb-7 backdrop-opacity-20 backdrop-blur-[100px] drop-shadow-2xl text-center">Увійти</h1>
             <form className="grid gap-y-2 " onSubmit={handleSubmit}>
                <Input
