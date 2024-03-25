@@ -2,27 +2,35 @@ import { useRef, FC, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import { Checkbox, Button, Avatar, Badge } from "@nextui-org/react";
 import { Toaster } from "@/shared/ui";
-import { useImageUpload, btnAttribs, useBase64 } from "@/shared";
-import { RegisterInitState, reducer, useRegisterMutation } from "@/features/auth";
+// import { useImageUpload, btnAttribs, useBase64 } from "@/shared";
+// import { RegisterInitState, reducer, useRegisterMutation } from "@/features/auth";
+import { RegisterInitState, reducer  } from "@/features/auth";
 import { Pencil } from "lucide-react";
 import { Inputs } from "./Inputs";
 import { Success } from "./Success";
+import { btnAttribs, useImageUpload } from "@/shared";
 
 const Registration: FC = () => {
    const errRef = useRef<HTMLInputElement>(null);
    const [agree, setAgree] = useState(false);
 
-   const { selectedFile, preview, onSelectFile } = useImageUpload();
-   const image = useBase64(selectedFile);
+   // const { selectedFile, preview, onSelectFile } = useImageUpload();
+   const { preview, onSelectFile } = useImageUpload();
+   // const image = useBase64(selectedFile);
 
    const [state, dispatch] = useReducer(reducer, RegisterInitState);
 
-   const [register, { isLoading }] = useRegisterMutation();
+   // const [register, { isLoading }] = useRegisterMutation();
+   const [isLoading, setIsLoading] = useState(false); 
+
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       try {
-         await register({ login: state.login, pwd: state.pwd, email: state.email, image }).unwrap();
+         setIsLoading(true);
+         // await register({ login: state.login, pwd: state.pwd, email: state.email, image }).unwrap();
+         await new Promise((resolve) => setTimeout(resolve, 1000));
+         setIsLoading(false);
          dispatch({ type: "SET_SUCCESS", payload: true });
          dispatch({ type: "SET_LOGIN", payload: "" });
          dispatch({ type: "SET_PWD", payload: "" });
