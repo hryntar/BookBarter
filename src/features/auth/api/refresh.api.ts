@@ -1,4 +1,4 @@
-import { IAuthResponse } from "@/shared/types/auth.interfaces";
+import { IAuthResponse } from "@/features/auth/model/auth.interfaces";
 import { authApi } from "..";
 
 export const refreshSlice = authApi.injectEndpoints({
