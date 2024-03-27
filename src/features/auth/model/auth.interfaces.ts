@@ -1,5 +1,5 @@
 export interface IAuthCredentials {
-   user: string;
+   email: string;
    pwd: string;
 }
 
@@ -13,7 +13,7 @@ export interface IRegisterCredentials {
    pwd: string;
    email: string; 
    phone: string;
-   image: string | null;
+   image: Blob | null;
 }
 
 export interface RegisterReducerState {
