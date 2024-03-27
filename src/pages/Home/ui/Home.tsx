@@ -14,7 +14,7 @@ import {
    NavbarMenuToggle,
    Tooltip,
 } from "@nextui-org/react";
-import { Banknote, Bell, BookHeart, BookPlus, Landmark, Wallet } from "lucide-react";
+import { Bell, BookHeart, BookPlus, Wallet } from "lucide-react";
 import { FC, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
