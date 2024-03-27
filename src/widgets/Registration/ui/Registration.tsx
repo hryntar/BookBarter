@@ -66,7 +66,7 @@ const Registration: FC = () => {
                      size="sm"
                      className="w-[30px] h-[30px]"
                   >
-                     <Avatar className="w-[70px] h-[70px]" src={preview} />
+                     <Avatar color="primary" className="w-[70px] h-[70px]" src={preview} />
                   </Badge>
                   <input id="fileInput" type="file" accept="image/*" onChange={onSelectFile} style={{ display: "none" }} />
                </div>
