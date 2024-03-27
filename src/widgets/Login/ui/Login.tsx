@@ -16,37 +16,36 @@ const Login = () => {
    const location = useLocation();
    const from: string = location.state?.from?.pathname || "/";
 
-   const userRef = useRef<HTMLInputElement>(null);
+   const emailRef = useRef<HTMLInputElement>(null);
    const errRef = useRef<HTMLInputElement>(null);
 
    const [pwd, setPwd] = useState("");
    const [errMsg, setErrMsg] = useState("");
-   const [user, resetUser, userAttribs] = useInput("user", "");
+   const [email, resetEmail, emailAttribs] = useInput("user", "");
    const [check, toggleCheck] = useToggle("persist", false);
    const [isVisible, setIsVisible] = useState(false);
 
    // const [login, { isLoading }] = useLoginMutation();
-   const [isLoading, setIsLoading] = useState(false); 
+   const [isLoading, setIsLoading] = useState(false);
 
    useEffect(() => {
-      userRef.current?.focus();
+      emailRef.current?.focus();
    }, []);
 
    useEffect(() => {
       setErrMsg("");
-   }, [user, pwd]);
+   }, [email, pwd]);
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       try {
          setIsLoading(true);
-         // const userData = await login({ user, pwd }).unwrap();
-         // dispatch(setCredentials({ ...userData }));
-         const userData = { roles: [2001], accessToken: "1" };
+         // const userData = await login({ email, pwd }).unwrap();
          await new Promise((resolve) => setTimeout(resolve, 1000));
+         const userData = { roles: [2001], accessToken: "1" };
          dispatch(setCredentials({ ...userData }));
          setIsLoading(false);
-         resetUser("");
+         resetEmail("");
          setPwd("");
          navigate(from, { replace: true });
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -72,10 +71,10 @@ const Login = () => {
                <Input
                   {...inputAttribs}
                   autoFocus
-                  type="text"
-                  label="Ім'я користувача"
-                  ref={userRef}
-                  {...userAttribs}
+                  type="email"
+                  label="Email"
+                  ref={emailRef}
+                  {...emailAttribs}
                   classNames={{ label: "after:content-['']" }}
                />
                <Input
