@@ -71,7 +71,7 @@ const Login = () => {
                <Input
                   {...inputAttribs}
                   autoFocus
-                  type="email"
+                  type="text"
                   label="Email"
                   ref={emailRef}
                   {...emailAttribs}
