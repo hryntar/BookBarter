@@ -1,3 +1,3 @@
-import { Publish } from "./ui/Publish";
+import { PublishPage } from "./ui/PublishPage";
 
-export { Publish }
+export { PublishPage }
