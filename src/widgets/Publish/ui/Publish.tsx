@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Toaster } from "@/shared/ui";
 import { GenreValue } from "../model/book.interface";
-import { genres } from "../model/genres";
+import { genresData } from "../model/genres";
 
 export const Publish = () => {
    const { selectedFile, preview, onSelectFile } = useImageUpload();
@@ -80,7 +80,7 @@ export const Publish = () => {
                aria-describedby="uidnote"
             />
             <Select
-               items={genres}
+               items={genresData}
                variant="underlined"
                color="primary"
                isMultiline={true}
