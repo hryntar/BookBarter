@@ -5,7 +5,7 @@ export const registerSlice = authApi.injectEndpoints({
    endpoints: (builder) => ({
       register: builder.mutation<void, IRegisterCredentials>({
          query: (credentials) => ({
-            url: "/register",
+            url: "auth/registration",
             method: "POST",
             body: { ...credentials },
          }),
