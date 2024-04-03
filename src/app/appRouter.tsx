@@ -7,7 +7,7 @@ import { Home, Missing, Unauthorized } from "@/pages/Home";
 import { PersistLogin, RequireAuth } from "@/features/auth";
 import { Profile } from "@/pages/Profile";
 import { Wishlist } from "@/pages/Wishlist/ui/Wishlist";
-import { Publish } from "@/pages/Publish";
+import { PublishPage } from "@/pages/Publish";
 import { Requests } from "@/pages/Requests";
 
 export enum Role {
@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
                   children: [
                      {
                         path: "publish",
-                        element: <Publish />,
+                        element: <PublishPage />,
                      },
                   ],
                },

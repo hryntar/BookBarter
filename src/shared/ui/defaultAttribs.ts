@@ -10,5 +10,5 @@ export const btnAttribs = {
    variant: "solid" as const,
    size: "lg" as const,
    radius: "lg" as const,
-   className: 'font-semibold'
+   // className: 'font-semibold'
 }
