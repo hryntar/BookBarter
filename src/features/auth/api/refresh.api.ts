@@ -4,7 +4,7 @@ import { authApi } from "..";
 export const refreshSlice = authApi.injectEndpoints({
    endpoints: (builder) => ({
       refresh: builder.query<IAuthResponse, void>({
-         query: () => "/refresh",
+         query: () => "auth/refresh",
       }),
    }),
 });
