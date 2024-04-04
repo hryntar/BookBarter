@@ -1,11 +1,11 @@
 export interface IBook {
    title: string;
    author: string;
-   year: number;
+   year: string;
    genres: GenreValue[];
    description: string;
    publishedBy: string;
-   price: number;
+   price: string;
    image: Blob | null;
 }
 
@@ -16,4 +16,4 @@ export interface Genre {
 
 type GenreLabel = "Роман" | "Поезія" | "Фантастика" | "Фентезі" | "Детектив" | "Біографія" | "Історичний" | "Наукова література" | "Художня література" | "Дитяча література";
 
-export type GenreValue = "novel" | "poetry" | "fantasy" | "fiction" | "detective" | "biography" | "historical" | "scientific" | "sci-fi" | "children";
+export type GenreValue = "NOVEL" | "POETRY" | "FANTASY" | "FICTION" | "DETECTIVE" | "BIOGRAPHY" | "HISTORICAL" | "SCIENTIFIC" | "SCI-FI" | "CHILDREN";
