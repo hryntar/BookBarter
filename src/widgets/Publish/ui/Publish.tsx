@@ -20,8 +20,8 @@ export const Publish = () => {
       const title = formData.get("title") as string;
       const author = formData.get("author") as string;
       const genres = formData.getAll("genres") as GenreValue[]; 
-      const price = Number(formData.get("price")); 
-      const year = Number(formData.get("year"));
+      const price = formData.get("price") as string; 
+      const year = formData.get("year") as string;
       const description = formData.get("description") as string;
       const publishedBy = formData.get("publishedBy") as string;
       
