@@ -6,7 +6,7 @@ export const Dropdown = () => {
    const navigate = useNavigate();
 
    return (
-      <DropdownWrapper classNames={{ content: "bg-primary/5 shadow-3xl border-1 border-primary rounded-3xl " }}>
+      <DropdownWrapper classNames={{ content: "bg-background/80 shadow-3xl border-1 border-primary rounded-3xl " }}>
          <DropdownTrigger>
             <div className="flex items-center cursor-pointer max-sm:gap-2 gap-4 bg-primary/5 shadow-3xl border-1 border-primary max-sm:p-1  max-sm:pr-[5px] max-sm:py-[5px]  p-2 rounded-full">
                <p className="flex gap-1 items-center text-primary ml-2">

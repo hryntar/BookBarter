@@ -1,7 +1,7 @@
-import booksApi from "../model/booksApi";
 import { IBook } from "../model/book.interface";
+import publishApi from "../model/publishApi";
 
-export const publishSlice = booksApi.injectEndpoints({
+export const publishSlice = publishApi.injectEndpoints({
    endpoints: (builder) => ({
       publish: builder.mutation<void, IBook>({ 
          query: (bookData) => {
