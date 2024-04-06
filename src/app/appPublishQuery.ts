@@ -2,8 +2,8 @@ import { BaseQueryApi, BaseQueryFn, fetchBaseQuery } from "@reduxjs/toolkit/quer
 import { RootState } from "./appStore";
 import { logOut, setCredentials } from "@/features/auth";
 
-export const baseQuery = fetchBaseQuery({
-   baseUrl: import.meta.env.VITE_BASE_API_BOOKS_URL,
+export const baseQuery = fetchBaseQuery({ 
+   baseUrl: import.meta.env.VITE_BASE_API_PUBLISH_URL,
    credentials: "include",
    prepareHeaders: (headers, { getState }) => {
       const state = getState() as RootState;
@@ -15,7 +15,7 @@ export const baseQuery = fetchBaseQuery({
    },
 });
 
-export const baseBookQueryWithReAuth: BaseQueryFn = async (
+export const basePublishQueryWithReAuth: BaseQueryFn = async (
    args: Parameters<BaseQueryFn>[0],
    api: BaseQueryApi,
    extraOptions: Parameters<BaseQueryFn>[2]
