@@ -1,7 +1,7 @@
+import { baseApi } from "@/features/auth";
 import { IBooksResponse } from "../model/books.interface";
-import booksApi from "../model/booksApi";
 
-export const booksSlice = booksApi.injectEndpoints({
+export const booksSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       getBooks: builder.query<IBooksResponse[], void>({
          query: () => "/books",

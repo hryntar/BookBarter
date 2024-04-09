@@ -1,7 +1,7 @@
 import { IAuthResponse } from "@/features/auth/model/auth.interfaces";
-import { authApi } from "..";
+import { baseApi } from "..";
 
-export const refreshSlice = authApi.injectEndpoints({
+export const refreshSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       refresh: builder.query<IAuthResponse, void>({
          query: () => "auth/refresh",

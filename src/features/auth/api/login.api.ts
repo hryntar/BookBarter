@@ -1,7 +1,7 @@
 import { IAuthCredentials, IAuthResponse } from "@/features/auth/model/auth.interfaces";
-import { authApi } from "..";
+import baseApi from "./authApi";
 
-export const loginSlice = authApi.injectEndpoints({
+export const loginSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       login: builder.mutation<IAuthResponse, IAuthCredentials>({
          query: (credentials) => ({

@@ -1,7 +1,7 @@
 import { IRegisterCredentials } from "@/features/auth/model/auth.interfaces";
-import { authApi } from "..";
+import { baseApi } from "..";
 
-export const registerSlice = authApi.injectEndpoints({
+export const registerSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       register: builder.mutation<void, IRegisterCredentials>({
          query: (credentials) => {
