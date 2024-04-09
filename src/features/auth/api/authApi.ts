@@ -1,9 +1,9 @@
 import { baseQueryWithReAuth } from "@/app/appQuery";
 import { createApi  } from "@reduxjs/toolkit/query/react"; 
 
-const authApi = createApi({
+const baseApi = createApi({
    baseQuery: baseQueryWithReAuth,
    endpoints: () => ({}),
 });
 
-export default authApi;
+export default baseApi;

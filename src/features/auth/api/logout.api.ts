@@ -1,9 +1,9 @@
-import { authApi } from "..";
+import { baseApi } from "..";
 
-export const logoutSlice = authApi.injectEndpoints({
+export const logoutSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       logout: builder.query<void, void>({
-         query: () => "/logout",
+         query: () => "auth/logout",
       }),
    }),
 });

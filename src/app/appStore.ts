@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit/react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { rootReducer } from "./appReducer";
-import { authApi } from "@/features/auth";
-import publishApi from "@/widgets/Publish/model/publishApi";
-import booksApi from "@/widgets/Books/model/booksApi";
+import { baseApi } from "@/features/auth"; 
 
 export const store = configureStore({
    reducer: rootReducer,
-   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware).concat(publishApi.middleware).concat(booksApi.middleware),
+   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
    // devTools: true,
 });
 
