@@ -19,14 +19,14 @@ export const Publish = () => {
       const formData = new FormData(e.currentTarget);
       const title = formData.get("title") as string;
       const author = formData.get("author") as string;
-      const genres = formData.getAll("genres") as GenreValue[]; 
-      const price = formData.get("price") as string; 
+      const genres = formData.getAll("genres") as GenreValue[];
+      const price = formData.get("price") as string;
       const year = formData.get("year") as string;
       const description = formData.get("description") as string;
       const publishedBy = formData.get("publishedBy") as string;
-      
+
       try {
-         await publish({ title, author, year, image: blob, description, publishedBy, price, genres}).unwrap();
+         await publish({ title, author, year, image: blob, description, publishedBy, price, genres }).unwrap();
          navigate("/");
          // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
@@ -39,6 +39,12 @@ export const Publish = () => {
          } else {
             setErrMsg("Виникла помилка( Спробуйте ще раз");
          }
+      }
+   };
+
+   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!/[0-9]/.test(e.key) || e.key === "." || e.key.toLowerCase() === "e") {
+         e.preventDefault();
       }
    };
 
@@ -59,6 +65,7 @@ export const Publish = () => {
                {...inputAttribs}
                type="number"
                name="year"
+               onKeyDown={handleKeyDown}
                label="Рік видання"
                classNames={{ label: "after:content-['']" }}
                aria-describedby="uidnote"
@@ -74,6 +81,7 @@ export const Publish = () => {
             <Input
                {...inputAttribs}
                type="number"
+               onKeyDown={handleKeyDown}
                name="price"
                label="Ціна"
                classNames={{ label: "after:content-['']" }}
@@ -92,14 +100,16 @@ export const Publish = () => {
                isRequired
                classNames={{
                   trigger: "min-h-unit-12 py-2",
-                  popoverContent: "bg-background"
+                  popoverContent: "bg-background",
                }}
                className="mt-2"
                renderValue={(items) => {
                   return (
                      <div className="flex flex-wrap gap-2">
                         {items.map((item) => (
-                           <Chip color="primary" radius="sm" variant="bordered" key={item.key}>{item.rendered}</Chip>
+                           <Chip color="primary" radius="sm" variant="bordered" key={item.key}>
+                              {item.rendered}
+                           </Chip>
                         ))}
                      </div>
                   );
@@ -125,7 +135,7 @@ export const Publish = () => {
             />
             <Button className="mt-5" {...btnAttribs} fullWidth isLoading={isLoading} type="submit">
                Опублікувати
-            </Button> 
+            </Button>
          </form>
          <Toaster show={Boolean(errMsg)} msg={errMsg} />
       </section>

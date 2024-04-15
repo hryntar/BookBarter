@@ -8,7 +8,7 @@ export const BookItem = ({ ...book }: IBooksResponse) => {
    return (
       <article className="bg-primary/5 border border-primary rounded-2xl overflow-hidden shadow-3xl flex max-w-md">
          <div>
-            <Image width={170} alt="NextUI hero Image" src={book.image ? book.image : "/missingbook.jpg"} />
+            <Image width={170} alt="NextUI hero Image" src={`data:image/jpeg;base64,${book.image}`} />
          </div>
          <Link to="#" className="flex flex-col justify-between p-3">
             <div>

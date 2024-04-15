@@ -16,4 +16,4 @@ export interface Genre {
 
 type GenreLabel = "Роман" | "Поезія" | "Фантастика" | "Фентезі" | "Детектив" | "Біографія" | "Історичний" | "Наукова література" | "Художня література" | "Дитяча література";
 
-export type GenreValue = "NOVEL" | "POETRY" | "FANTASY" | "FICTION" | "DETECTIVE" | "BIOGRAPHY" | "HISTORICAL" | "SCIENTIFIC" | "SCI-FI" | "CHILDREN";
+export type GenreValue = "NOVEL" | "POETRY" | "FANTASY" | "FICTION" | "DETECTIVE" | "BIOGRAPHY" | "HISTORICAL" | "SCIENTIFIC" | "SCI_FI" | "CHILDREN";

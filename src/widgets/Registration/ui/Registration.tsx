@@ -84,7 +84,7 @@ const Registration: FC = () => {
                      fullWidth
                      isLoading={isLoading}
                      type="submit"
-                     isDisabled={!state.validLogin || !state.validPwd || !state.validMatch || !agree ? true : false}
+                     isDisabled={!state.validLogin || !state.validPwd || !state.validMatch || !state.validPhone || !agree ? true : false}
                   >
                      Зареєструватись
                   </Button>
