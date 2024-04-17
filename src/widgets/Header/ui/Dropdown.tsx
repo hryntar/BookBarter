@@ -13,7 +13,7 @@ export const Dropdown = ({user}: {user?: IUser}) => {
                <p className="flex gap-1 items-center text-primary ml-2">
                   <span>{user?.bucks}</span> <Wallet size={20} strokeWidth={1.5} />
                </p>
-               <Avatar color="primary" isBordered src={user?.image ? `data:image/jpeg;base64,${user?.image}` : undefined} className="max-sm:w-[35px] max-sm:h-[35px] w-[40px] h-[40px]" />
+               <Avatar color="primary" isBordered src={user?.image ? `data:image/webp;base64,${user?.image}` : undefined} className="max-sm:w-[35px] max-sm:h-[35px] w-[40px] h-[40px]" />
             </div>
          </DropdownTrigger>
          <DropdownMenu variant="shadow" color="primary" aria-label="Profile Actions">
