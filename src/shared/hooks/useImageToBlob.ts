@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function useImageToBlob(selectedFile: File | null) {
-   const [blob, setBlob] = useState<Blob | null>(null);
-   // const [error, setError] = useState<string | null>(null);
-   // if (!selectedFile) return null;
+   const [blob, setBlob] = useState<Blob | null>(null); 
    
    const convertImageToBlob = (imageFile: File) => {
       const reader = new FileReader();

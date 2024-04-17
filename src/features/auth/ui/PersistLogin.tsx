@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Spinner } from "@nextui-org/react";
 import { selectCurrentToken, setCredentials } from "..";
-import { refreshSlice } from "../api/refresh.api";
 import { useAppDispatch } from "@/app/appStore";
 import { useLocalStorage } from "@/shared";
+import { useRefreshMutation } from "../api/refresh.api";
 
 const PersistLogin = () => {
    const [isLoading, setIsLoading] = useState(true);
    const token = useSelector(selectCurrentToken);
    const [persist] = useLocalStorage("persist", false);
-   const [trigger] = refreshSlice.endpoints.refresh.useLazyQuery();
+   const [trigger] = useRefreshMutation();
    const dispatch = useAppDispatch();
    const navigate = useNavigate();
 

@@ -11,7 +11,7 @@ export const Dropdown = ({user}: {user?: IUser}) => {
          <DropdownTrigger>
             <div className="flex items-center cursor-pointer max-sm:gap-2 gap-4 bg-primary/5 shadow-3xl border-1 border-primary max-sm:p-1  max-sm:pr-[5px] max-sm:py-[5px]  p-2 rounded-full">
                <p className="flex gap-1 items-center text-primary ml-2">
-                  <span>{user?.buck}</span> <Wallet size={20} strokeWidth={1.5} />
+                  <span>{user?.bucks}</span> <Wallet size={20} strokeWidth={1.5} />
                </p>
                <Avatar color="primary" isBordered src={user?.image ? `data:image/jpeg;base64,${user?.image}` : undefined} className="max-sm:w-[35px] max-sm:h-[35px] w-[40px] h-[40px]" />
             </div>

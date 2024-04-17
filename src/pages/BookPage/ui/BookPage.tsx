@@ -29,6 +29,7 @@ const BookPage = () => {
                color: "#fff",
             },
          });
+         // 404 недостатньо грошей
          // if (!err?.originalStatus) {
          //    setErrMsg("Сервер не відповідає( Спробуйте ще раз");
          // } else if (err.originalStatus === 400) {

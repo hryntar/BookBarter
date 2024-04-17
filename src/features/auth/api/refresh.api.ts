@@ -3,10 +3,14 @@ import { baseApi } from "..";
 
 export const refreshSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
-      refresh: builder.query<IAuthResponse, void>({
-         query: () => "auth/refresh",
+      refresh: builder.mutation<IAuthResponse, void>({
+         // query: () => "auth/refresh",
+         query: () => ({
+            url: "auth/refresh",
+            method: "POST", 
+         }),
       }),
    }),
 });
 
-export const { useRefreshQuery } = refreshSlice;
+export const { useRefreshMutation } = refreshSlice;
