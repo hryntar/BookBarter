@@ -7,12 +7,11 @@ export const booksSlice = baseApi.injectEndpoints({
       getBooks: builder.query<IBooksResponse[], void>({
          query: () => "api/book/get-all",
          // query: () => "books",
-         // keepUnusedDataFor: 30,
+         keepUnusedDataFor: 0,
       }),
       getBook: builder.query<IBooksResponse, string>({
          query: (id) => `api/book/get/${id}`,
          // query: (id) => `books/${id}`,
-         keepUnusedDataFor: 5,
       }), 
       buyBook: builder.mutation<void, IPurchase>({
          query: (args) => ({
