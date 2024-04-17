@@ -41,7 +41,7 @@ const BookPage = () => {
       }
    }
 
-   if (book) {
+   
       return (
          <>
             <Header />
@@ -50,23 +50,23 @@ const BookPage = () => {
             ) : (
                <section className="my-[80px] max-sm:mt-[20px] sm:px-10 mx-auto">
                   <div className="flex gap-x-[50px]">
-                     <Image src={`data:image/jpeg;base64,${book.image}`} width={300} height={500} alt="Book" />
+                     <Image src={`data:image/jpeg;base64,${book?.image}`} width={300} height={500} alt="Book" />
                      <div className="max-w-[800px]">
-                        <h1 className="font-bold text-[42px] leading-tight">{book.title}</h1>
+                        <h1 className="font-bold text-[42px] leading-tight">{book?.title}</h1>
                         <div className="text-xl mt-10">
                            <div className="mb-10 space-y-[10px]">
                               <p>
-                                 <span className="font-semibold text-primary">Автор:</span> {book.author}
+                                 <span className="font-semibold text-primary">Автор:</span> {book?.author}
                               </p>
                               <p>
-                                 <span className="font-semibold text-primary">Рік видання:</span> {book.year}
+                                 <span className="font-semibold text-primary">Рік видання:</span> {book?.year}
                               </p>
                               <p>
-                                 <span className="font-semibold text-primary">Видавництво:</span> {book.publishedBy}
+                                 <span className="font-semibold text-primary">Видавництво:</span> {book?.publishedBy}
                               </p>
                            </div>
                            <div className="space-x-5">
-                              {book.genres.map((genre) => (
+                              {book?.genres.map((genre) => (
                                  <Chip color="primary" size="lg" radius="sm" variant="bordered" key={genre}>
                                     {genre}
                                  </Chip>
@@ -74,26 +74,25 @@ const BookPage = () => {
                            </div>
                            <div className="flex w-full item-center justify-between mt-20">
                               <div className="flex item-center gap-x-2 ">
-                                 <Avatar size="lg" className="mt-1" src={`data:image/jpeg;base64,${book.user.image}`} />
+                                 <Avatar size="lg" className="mt-1" src={`data:image/jpeg;base64,${book?.user.image}`} />
                                  <div>
-                                    <h4 className="text-2xl">{book.user.login}</h4>
-                                    <Rating value={book.user.rating} />
+                                    <h4 className="text-2xl">{book?.user.login}</h4>
+                                    <Rating value={book?.user.rating || 0} />
                                  </div>
                               </div>{" "}
                               <Button size="lg" color="primary" onClick={handleBuyBook} isLoading={isBuyLoading}>
-                                 Купити ${book.price}
+                                 Купити ${book?.price}
                               </Button>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <p className="mt-10 max-w-[1200px]">{book.description}</p>
+                  <p className="mt-10 max-w-[1200px]">{book?.description}</p>
                </section>
             )}
             <Toaster />
          </>
-      );
-   }
+      ); 
 };
 
 export default BookPage;
