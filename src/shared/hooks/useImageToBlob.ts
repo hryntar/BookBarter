@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react';
-import sharp from 'sharp';
-
-async function optimizeImage(file: File) {
-   const buffer = await file.arrayBuffer();
-   const optimizedBuffer = await sharp(Buffer.from(buffer))
-      .resize({ width: 800 }) // зменшуємо ширину до 800px
-      .webp({ quality: 80 }) // конвертуємо у webp з якістю 80
-      .toBuffer(); // повертаємо оптимізоване зображення як Buffer
-   return new File([optimizedBuffer], file.name, { type: 'image/webp' });
-}
 
 function useImageToBlob(selectedFile: File | null) {
    const [blob, setBlob] = useState<Blob | null>(null);
 
    const convertImageToBlob = async (imageFile: File) => {
-      const optimizedImage = await optimizeImage(imageFile);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-         if (reader.result) {
-            setBlob(new Blob([reader.result as ArrayBuffer]));
-         } else {
-            return null;
-         }
-      };
-      reader.onerror = () => null;
-      reader.readAsArrayBuffer(optimizedImage);
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(imageFile);
+      await new Promise((resolve) => img.onload = resolve);
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const MAX_WIDTH = 600;
+      const scaleFactor = MAX_WIDTH / img.width;
+      canvas.width = MAX_WIDTH;
+      canvas.height = img.height * scaleFactor;
+
+      ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob((blob) => {
+         setBlob(blob);
+      }, imageFile.type);
    };
 
    useEffect(() => {
