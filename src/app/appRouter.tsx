@@ -9,6 +9,7 @@ import { Profile } from "@/pages/Profile";
 import { Wishlist } from "@/pages/Wishlist/ui/Wishlist";
 import { PublishPage } from "@/pages/Publish";
 import { Requests } from "@/pages/Requests";
+import { BookPage } from "@/pages/BookPage";
 
 export enum Role {
    User = 2001, 
@@ -80,6 +81,15 @@ export const router = createBrowserRouter([
                      {
                         path: "requests",
                         element: <Requests />,
+                     },
+                  ],
+               },
+               {
+                  element: <RequireAuth allowedRoles={[Role.User]} />,
+                  children: [
+                     {
+                        path: "book/:id",
+                        element: <BookPage />,
                      },
                   ],
                },

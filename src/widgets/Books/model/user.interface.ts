@@ -5,4 +5,5 @@ export interface IUser {
    buck: number,
    phone: string, 
    rating: number, 
+   notifications: boolean
 }

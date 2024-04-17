@@ -5,7 +5,7 @@ export const userSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       getUser: builder.query<IUser, void>({
          query: () => "api/user/get",
-         keepUnusedDataFor: 120,
+         // keepUnusedDataFor: 30,
       }),
    }),
 });
