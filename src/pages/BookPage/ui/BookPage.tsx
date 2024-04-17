@@ -72,8 +72,8 @@ const BookPage = () => {
                                  </Chip>
                               ))}
                            </div>
-                           <div className="flex w-full item-center justify-between mt-20">
-                              <div className="flex item-center gap-x-2 ">
+                           <div className="flex w-full items-center justify-between mt-20">
+                              <div className="flex items-center gap-x-2 ">
                                  <Avatar size="lg" className="mt-1" src={`data:image/jpeg;base64,${book?.user.image}`} />
                                  <div>
                                     <h4 className="text-2xl">{book?.user.login}</h4>
