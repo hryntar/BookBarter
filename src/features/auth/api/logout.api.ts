@@ -2,10 +2,14 @@ import { baseApi } from "..";
 
 export const logoutSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
-      logout: builder.query<void, void>({
-         query: () => "auth/logout",
+      logout: builder.mutation<void, void>({
+         // query: () => "auth/logout",
+         query: () => ({
+            url: "auth/logout",
+            method: "POST", 
+         }),
       }),
    }),
 });
 
-export const { useLogoutQuery } = logoutSlice;
+export const { useLogoutMutation } = logoutSlice;
