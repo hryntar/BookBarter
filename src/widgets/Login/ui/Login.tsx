@@ -7,8 +7,8 @@ import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
 import { useInput, useToggle } from "@/shared";
 import { Toaster } from "@/shared/ui";
 import { useAppDispatch } from "@/app/appStore";
-import { setCredentials } from "@/features/auth";
-// import { useLoginMutation, setCredentials } from "@/features/auth";
+// import { setCredentials } from "@/features/auth";
+import { useLoginMutation, setCredentials } from "@/features/auth";
 
 const Login = () => {
    const dispatch = useAppDispatch();
@@ -25,8 +25,8 @@ const Login = () => {
    const [check, toggleCheck] = useToggle("persist", false);
    const [isVisible, setIsVisible] = useState(false);
 
-   // const [login, { isLoading }] = useLoginMutation();
-   const [isLoading, setIsLoading] = useState(false);
+   const [login, { isLoading }] = useLoginMutation();
+   // const [isLoading, setIsLoading] = useState(false);
 
    useEffect(() => {
       emailRef.current?.focus();
@@ -39,12 +39,12 @@ const Login = () => {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       try {
-         setIsLoading(true);
-         // const userData = await login({ email, pwd }).unwrap();
-         await new Promise((resolve) => setTimeout(resolve, 1000));
-         const userData = { roles: [2001], accessToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxd2VydHlAZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcxMzAwNDQwMSwiaWF0IjoxNzEzMDAwODAxfQ.0WtqBX93sk_Q_IaoeGestxQaX44K8R_ggwYJR9Y_wsY" };
+         // setIsLoading(true);
+         const userData = await login({ email, pwd }).unwrap();
+         // await new Promise((resolve) => setTimeout(resolve, 1000));
+         // const userData = { roles: [2001], accessToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxd2VydHlAZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MTcxMzAwNDQwMSwiaWF0IjoxNzEzMDAwODAxfQ.0WtqBX93sk_Q_IaoeGestxQaX44K8R_ggwYJR9Y_wsY" };
          dispatch(setCredentials({ ...userData }));
-         setIsLoading(false);
+         // setIsLoading(false);
          resetEmail("");
          setPwd("");
          navigate(from, { replace: true });
