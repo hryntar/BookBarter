@@ -36,8 +36,8 @@ export const booksSlice = baseApi.injectEndpoints({
          }),
       }),
       getWishlist: builder.query<IBooksResponse[], void>({
-         // query: () => `api/wishlist`,
-         query: () => `wishlist`,
+         query: () => `api/wishlist`,
+         // query: () => `wishlist`,
          keepUnusedDataFor: 0,
       }),
    }),
