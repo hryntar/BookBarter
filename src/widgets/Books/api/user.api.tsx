@@ -1,5 +1,5 @@
 import { baseApi } from "@/features/auth";
-import { IUser } from "../model/user.interface";
+import { IProfile, IUser } from "../model/user.interface";
 
 export const userSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
@@ -7,7 +7,11 @@ export const userSlice = baseApi.injectEndpoints({
          query: () => "api/user/get",
          keepUnusedDataFor: 3,
       }),
+      getProfile: builder.query<IProfile, void>({
+         query: () => "profile",
+         keepUnusedDataFor: 0,
+      }),
    }),
 });
 
-export const { useGetUserQuery } = userSlice;
+export const { useGetUserQuery, useGetProfileQuery } = userSlice;

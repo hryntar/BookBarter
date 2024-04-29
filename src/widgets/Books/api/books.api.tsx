@@ -5,8 +5,8 @@ import { IPurchase } from "@/pages/BookPage/model/purchase.interface";
 export const booksSlice = baseApi.injectEndpoints({
    endpoints: (builder) => ({
       getBooks: builder.query<IBooksResponse[], void>({
-         query: () => "api/book/get-all",
-         // query: () => "books",
+         // query: () => "api/book/get-all",
+         query: () => "books",
          keepUnusedDataFor: 0,
       }),
       getBook: builder.query<IBooksResponse, string>({

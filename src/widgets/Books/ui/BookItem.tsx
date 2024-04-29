@@ -12,10 +12,8 @@ export const BookItem = ({ ...book }: IBooksResponse) => {
    const [isFavorite, setIsFavorite] = useState(false);
 
    useEffect(() => {
-      console.log(1);
       
       const favorites = JSON.parse(localStorage.getItem("favorites") || '[]');
-      console.log(2);
       
       setIsFavorite(favorites.includes(book.id));
    }, [book.id]);

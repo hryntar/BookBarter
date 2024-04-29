@@ -2,12 +2,13 @@ import { Rating } from "@/shared/ui";
 import { Avatar } from "@nextui-org/react";
 
 interface IUserProps {
-   image: null | string;
+   image: null | string | undefined;
    login: string;
    rating: number;
 }
 
 export const User = ({ ...user }: IUserProps) => {
+   
    return (
       <div className="flex item-center gap-x-2">
          <Avatar className="mt-1" src={user.image ? `data:image/webp;base64,${user.image}` : undefined} />

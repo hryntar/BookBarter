@@ -10,13 +10,15 @@ export interface IBooksResponse {
    year: string,
    publishedBy: string,
    price: string,
-   user: {
-      login: string,
-      email: string,
-      rating: number,
-      phone: string,
-      image: Image
-   }
+   user: UserType;
+}
+
+export type UserType = {
+   login: string,
+   email: string,
+   rating: number,
+   phone: string,
+   image: Image
 }
 
 type Image = string | null
