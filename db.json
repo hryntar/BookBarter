@@ -112,14 +112,12 @@
       }
    ],
    "profile": {
-      "user": {
-         "login": "taras",
-         "email": "taras@kd.com",
-         "rating": 3.5,
-         "phone": "380684084376",
-         "image": null,
-         "bucks": 10
-      },
+      "login": "taras",
+      "email": "taras@kd.com",
+      "rating": 3.5,
+      "phone": "380684084376",
+      "image": null,
+      "bucks": 10, 
       "books": [
          {
             "id": 1,

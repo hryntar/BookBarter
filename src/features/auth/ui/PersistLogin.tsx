@@ -11,7 +11,7 @@ const PersistLogin = () => {
    const [isLoading, setIsLoading] = useState(true);
    const token = useSelector(selectCurrentToken);
    const [persist] = useLocalStorage("persist", false);
-   const [trigger] = useRefreshMutation();
+   const [refresh] = useRefreshMutation();
    const dispatch = useAppDispatch();
    const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const PersistLogin = () => {
 
       const verifyRefreshToken = async () => {
          try {
-            const response = await trigger().unwrap();
+            const response = await refresh().unwrap();
             dispatch(
                setCredentials({
                   accessToken: response.accessToken,

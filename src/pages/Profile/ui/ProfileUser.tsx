@@ -2,12 +2,19 @@ import { useAppDispatch } from "@/app/appStore";
 import { setCredentials } from "@/features/auth";
 import { useLogoutMutation } from "@/features/auth/api/logout.api";
 import { Rating } from "@/shared/ui";
-import { IUser } from "@/widgets/Books/model/user.interface";
 import { Avatar, Button } from "@nextui-org/react";
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const ProfileUser = ({ ...user }: IUser) => {
+interface ProfileUserProps {
+   login: string,
+   image: string | null,
+   email: string,
+   phone: string,
+   rating: number, 
+}
+
+const ProfileUser = ({ ...user }: ProfileUserProps) => {
    const navigate = useNavigate();
    const dispatch = useAppDispatch();
    const [logout] = useLogoutMutation();

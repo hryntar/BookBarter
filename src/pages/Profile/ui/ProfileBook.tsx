@@ -4,7 +4,8 @@ import { Chip, Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
 const ProfileBook = ({ id, title, year, publishedBy, price, genres, image, user, author}: IBooksResponse) => {
-   console.log(user);
+   
+   console.log(user)
    
    return (
       <article className="bg-primary/5 border border-primary rounded-2xl overflow-hidden shadow-3xl flex max-w-md">

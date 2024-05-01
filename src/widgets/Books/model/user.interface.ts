@@ -11,6 +11,11 @@ export interface IUser {
 }
 
 export interface IProfile {
-   user: IUser;
+   login: string,
+   image: string | null,
+   email: string,
+   bucks: number,
+   phone: string,
+   rating: number, 
    books: IBooksResponse[];
 }
