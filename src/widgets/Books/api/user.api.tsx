@@ -8,7 +8,7 @@ export const userSlice = baseApi.injectEndpoints({
          keepUnusedDataFor: 3,
       }),
       getProfile: builder.query<IProfile, void>({
-         query: () => "profile",
+         query: () => "api/user/get",
          keepUnusedDataFor: 0,
       }),
    }),
