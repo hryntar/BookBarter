@@ -13,7 +13,7 @@ export const userSlice = baseApi.injectEndpoints({
          keepUnusedDataFor: 0,
       }),
       getNotifications: builder.query<INotification[], void>({ 
-         query: () => "api/notifications",
+         query: () => "api/notifications/get",
          keepUnusedDataFor: 0,
       })
    }),
