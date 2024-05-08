@@ -16,6 +16,15 @@ export interface IProfile {
    email: string,
    bucks: number,
    phone: string,
-   rating: number, 
+   rating: number,
    books: IBooksResponse[];
+}
+
+export interface INotification {
+   id: number,
+   title: string,
+   login: string,
+   phone: string,
+   rating: number,
+   price: string 
 }

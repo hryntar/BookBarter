@@ -10,7 +10,7 @@ import { useGetUserQuery } from "@/widgets/Books/api/user.api";
 export const Header = () => {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
    const navigate = useNavigate();
-   const { data } = useGetUserQuery();
+   const { data } = useGetUserQuery(); 
 
    return (
       <Navbar classNames={{ base: "bg-transparent", wrapper: "sm:pt-10 pt-2 max-sm:px-0" }} maxWidth="2xl" onMenuOpenChange={setIsMenuOpen}>
