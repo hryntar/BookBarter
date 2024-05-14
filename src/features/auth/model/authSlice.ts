@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface IInitialState {
    roles: number[];
    accessToken: string | null;
+   searchText: string;
 }
 
 const initialState: IInitialState = {
    roles: [],
    accessToken: null,
+   searchText: "",
 };
 
 const authSlice = createSlice({
@@ -23,9 +25,12 @@ const authSlice = createSlice({
          state.roles = [];
          state.accessToken = null;
       },
+      setSearchText: (state, action) => {
+         state.searchText = action.payload;
+      }
    },
 });
 
-export const { setCredentials, logOut } = authSlice.actions;
+export const { setCredentials, logOut, setSearchText } = authSlice.actions;
 
 export default authSlice.reducer; 

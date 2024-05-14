@@ -1,4 +1,4 @@
-import { Badge, Button, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Tooltip } from "@nextui-org/react"; 
+import { Badge, Button, Input, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Tooltip } from "@nextui-org/react";
 import { useState } from "react";
 import { MenuBurger } from "./MenuBurger";
 import { Dropdown } from "./Dropdown";
@@ -6,11 +6,20 @@ import { menuItems } from "../model/menuItems";
 import { useNavigate } from "react-router-dom";
 import { Bell } from "lucide-react";
 import { useGetUserQuery } from "@/widgets/Books/api/user.api";
+import { useAppDispatch } from "@/app/appStore";
+import { setSearchText } from "@/features/auth/model/authSlice";
 
 export const Header = () => {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
    const navigate = useNavigate();
-   const { data } = useGetUserQuery(); 
+   const dispatch = useAppDispatch();
+   const { data } = useGetUserQuery();
+   const [inputText, setInputText] = useState("");
+   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const lowerCase = e.target.value.toLowerCase();
+      setInputText(lowerCase);
+      dispatch(setSearchText(inputText));
+   }; 
 
    return (
       <Navbar classNames={{ base: "bg-transparent", wrapper: "sm:pt-10 pt-2 max-sm:px-0" }} maxWidth="2xl" onMenuOpenChange={setIsMenuOpen}>
@@ -19,6 +28,9 @@ export const Header = () => {
             <NavbarBrand>
                <img className="sm:w-[150px] w-[110px]" width={150} src="/logo.svg" alt="BookBarter" />
             </NavbarBrand>
+         </NavbarContent>
+         <NavbarContent justify="center">
+            <Input onChange={inputHandler} variant="bordered" color="primary" placeholder="Пошук..." />
          </NavbarContent>
          <NavbarContent justify="end">
             <NavbarContent justify="end" className="max-sm:hidden sm:mr-5">
